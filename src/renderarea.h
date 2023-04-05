@@ -36,10 +36,12 @@ private:
     void updateCharges();
 
 
-    std::vector<Charge> listOfCharge;
+    struct environment env;
+
     float speed;
     QTimer* timer;
     bool isPlay;
+    int elapsed;
 
 };
 

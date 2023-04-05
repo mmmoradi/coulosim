@@ -3,11 +3,16 @@
 #include "renderarea.h"
 
 
+#include <QElapsedTimer>
+
 RenderArea::RenderArea(QWidget *parent)
     : QWidget{parent}
 {
     timer = new QTimer(this);
     isPlay = false;
+    env.deltaT = 0.0001;
+    addCharge(0,0,0,0,0.001,1,0);
+    addCharge(-50,20,15,0,-0.001,1,1);
 }
 
 
@@ -28,7 +33,7 @@ void RenderArea::addCharge(int px, int py, int vx, int vy, float q, float mass, 
 {
     if (q == 0)
         return;
-    listOfCharge.push_back(Charge(px, py, vx, vy, q, mass, mobile));
+    env.listOfCharge.push_back(Charge(env, px, py, vx, vy, q, mass, mobile));
     update();
 }
 
@@ -54,7 +59,7 @@ void RenderArea::pause()
 void RenderArea::reset()
 {
     pause();
-    listOfCharge.clear();
+    env.listOfCharge.clear();
     update();
 }
 
@@ -63,9 +68,14 @@ void RenderArea::reset()
 void RenderArea::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
+
+
     painter.setRenderHint(QPainter::Antialiasing);
     painter.fillRect(event->rect(), QBrush(Qt::white));
 
+    painter.drawText(8,15, QString::number(elapsed)); //DEBUG
+    QElapsedTimer t;
+    t.start();
     // Transformations based on real world cordinate system
     painter.translate(width() / 2, height() / 2);
     painter.scale(1,-1);
@@ -78,6 +88,8 @@ void RenderArea::paintEvent(QPaintEvent *event)
             updateCharges();
 
     drawCharges(painter);
+
+    elapsed = t.elapsed();
 }
 
 
@@ -103,7 +115,7 @@ void RenderArea::drawCharges(QPainter& painter)
     QPen pcharge = QPen(Qt::blue,10,Qt::SolidLine,Qt::RoundCap);
     QPen ncharge = QPen(Qt::red,10,Qt::SolidLine,Qt::RoundCap);
 
-    for (auto& charge : listOfCharge) {
+    for (auto& charge : env.listOfCharge) {
         if (charge.getSign())
             painter.setPen(pcharge);
         else
@@ -116,11 +128,11 @@ void RenderArea::drawCharges(QPainter& painter)
 
 void RenderArea::updateCharges()
 {
-    for (auto& charge : listOfCharge) {
-        charge.updateForce(listOfCharge);
+    for (auto& charge : env.listOfCharge) {
+        charge.updateForce();
     }
 
-    for (auto& charge : listOfCharge) {
-        charge.updatePosition(0.0001); // deltaT = 0.0001
+    for (auto& charge : env.listOfCharge) {
+        charge.updatePosition();
     }
 }
