@@ -10,9 +10,11 @@ Charge::Charge(environment &env, int px, int py, int vx, int vy, float q, float 
 
 
 // TODO add friction force
-// TODO add magntic field
 void Charge::updateForce()
 {
+    if (!mobile)
+        return;
+
     force = Vector(0, 0);
 
     for (const auto& otherCharge : env.listOfCharge) {
@@ -25,6 +27,10 @@ void Charge::updateForce()
         force = force + ( r.normalize() * this->q * otherCharge.q / r.magnitudeSquerd() );
     }
     force = force * COULOMB_CONSTANT;
+
+    force = force + env.electricField * q;
+
+    force = force + velocity.cross(env.magneticField) * q;
 }
 
 

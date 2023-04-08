@@ -20,6 +20,7 @@ public:
     QSize sizeHint() const override;
 
     void addCharge(int px, int py, int vx, int vy, float q, float mass, bool mobile);
+    void setEnv(float magnetic, float electric_x, float electric_y);
 
     void play(float s);
     void pause();

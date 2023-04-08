@@ -9,10 +9,12 @@ RenderArea::RenderArea(QWidget *parent)
     : QWidget{parent}
 {
     timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     isPlay = false;
     env.deltaT = 0.0001;
-    addCharge(0,0,0,0,0.001,1,0);
-    addCharge(-50,20,15,0,-0.001,1,1);
+//    addCharge(0,0,0,0,0.001,1,0);
+//    addCharge(-50,20,15,0,-0.001,1,1);
+    addCharge(0,0,0,0,-0.001,1,1);
 }
 
 
@@ -31,17 +33,23 @@ QSize RenderArea::sizeHint() const
 // TODO add charge object into dynamic memory
 void RenderArea::addCharge(int px, int py, int vx, int vy, float q, float mass, bool mobile)
 {
-    if (q == 0)
+    if (q == 0 || mass == 0)
         return;
     env.listOfCharge.push_back(Charge(env, px, py, vx, vy, q, mass, mobile));
     update();
 }
 
 
+void RenderArea::setEnv(float magnetic, float electric_x, float electric_y)
+{
+    env.magneticField = magnetic;
+    env.electricField = Vector(electric_x, electric_y);
+}
+
+
 void RenderArea::play(float s)
 {
     speed = s;
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     timer->start(16); // 16ms = 62.5 FPS
     isPlay = true;
 }
@@ -50,8 +58,6 @@ void RenderArea::play(float s)
 void RenderArea::pause()
 {
     timer->stop();
-    // TODO just stop timer
-    disconnect(timer, SIGNAL(timeout()), this, SLOT(update()));
     isPlay = false;
 }
 

@@ -16,11 +16,11 @@ Coulosim::~Coulosim()
 
 void Coulosim::on_btn_add_charge_clicked()
 {
-    int px = ui->spinBox_px->value();
-    int py = ui->spinBox_py->value();
+    int px = ui->doubleSpinBox_px->value();
+    int py = ui->doubleSpinBox_py->value();
 
-    int vx = ui->spinBox_vx->value();
-    int vy = ui->spinBox_vy->value();
+    int vx = ui->doubleSpinBox_vx->value();
+    int vy = ui->doubleSpinBox_vy->value();
 
     float q = ui->doubleSpinBox_q->value();
 
@@ -34,6 +34,9 @@ void Coulosim::on_btn_add_charge_clicked()
 
 void Coulosim::on_pushButton_play_clicked()
 {
+    ui->renderArea->setEnv(ui->doubleSpinBox_magnetic->value(),
+                           ui->doubleSpinBox_electric_x->value(),
+                           ui->doubleSpinBox_electric_y->value());
     ui->renderArea->play(ui->doubleSpinBox_speed->value());
 }
 

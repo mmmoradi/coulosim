@@ -29,13 +29,13 @@
      <rect>
       <x>806</x>
       <y>10</y>
-      <width>271</width>
+      <width>277</width>
       <height>781</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <spacer name="verticalSpacer_2">
+     <item row="5" column="0">
+      <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -59,22 +59,22 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_vy">
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_vx">
            <property name="minimum">
-            <number>-100</number>
+            <double>-400.000000000000000</double>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <double>400.000000000000000</double>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_vx">
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_vy">
            <property name="minimum">
-            <number>-100</number>
+            <double>-400.000000000000000</double>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <double>400.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -90,22 +90,22 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_py">
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_px">
            <property name="minimum">
-            <number>-250</number>
+            <double>-400.000000000000000</double>
            </property>
            <property name="maximum">
-            <number>250</number>
+            <double>400.000000000000000</double>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_px">
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_py">
            <property name="minimum">
-            <number>-250</number>
+            <double>-400.000000000000000</double>
            </property>
            <property name="maximum">
-            <number>250</number>
+            <double>400.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -127,6 +127,9 @@
            </property>
            <property name="minimum">
             <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
            </property>
            <property name="singleStep">
             <double>0.100000000000000</double>
@@ -175,14 +178,14 @@
        </item>
       </layout>
      </item>
-     <item row="2" column="0">
+     <item row="4" column="0">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QLabel" name="label_speed">
            <property name="text">
-            <string>speed</string>
+            <string>speed:</string>
            </property>
           </widget>
          </item>
@@ -195,6 +198,54 @@
             <double>1.000000000000000</double>
            </property>
           </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_magnetic">
+           <property name="text">
+            <string>magnetic:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_magnetic">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLabel" name="label_electric">
+           <property name="text">
+            <string>electric:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_electric_x">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_electric_y"/>
          </item>
         </layout>
        </item>
@@ -226,7 +277,7 @@
       </layout>
      </item>
      <item row="3" column="0">
-      <spacer name="verticalSpacer">
+      <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>

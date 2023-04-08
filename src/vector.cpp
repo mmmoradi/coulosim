@@ -92,6 +92,12 @@ bool Vector::operator!=(const Vector &other) const
 }
 
 
+Vector Vector::cross(float other) const
+{
+    return Vector(y*other, x*other);
+}
+
+
 float Vector::magnitude() const
 {
     return std::sqrt(x*x + y*y);

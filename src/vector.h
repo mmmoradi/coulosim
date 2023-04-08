@@ -30,11 +30,11 @@ public:
     Vector operator/(float scalar) const;
 // TODO: add these vector operator
 //    Vector dot(const Vector& other) const;
-//    Vector cross(const Vector& other) const;
 
     bool operator==(const Vector &other) const;
     bool operator!=(const Vector &other) const;
 
+    Vector cross(float other) const;
     float magnitude() const;
     float magnitudeSquerd() const;
     Vector normalize() const;
