@@ -11,7 +11,7 @@ RenderArea::RenderArea(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     isPlay = false;
-    env.deltaT = 0.0001;
+    elapsed = 0;
     addCharge(0,0,0,0,0.001,1,0);
     addCharge(-50,20,15,0,-0.001,1,1);
 //    addCharge(0,0,0,0,-0.001,1,1);

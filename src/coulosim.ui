@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1084</width>
+    <width>1150</width>
     <height>800</height>
    </rect>
   </property>
@@ -27,9 +27,9 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>806</x>
+      <x>820</x>
       <y>10</y>
-      <width>277</width>
+      <width>321</width>
       <height>781</height>
      </rect>
     </property>
@@ -50,42 +50,11 @@
      <item row="0" column="0">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="label_velocity">
-           <property name="text">
-            <string>velocity:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_vx">
-           <property name="minimum">
-            <double>-400.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>400.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_vy">
-           <property name="minimum">
-            <double>-400.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>400.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label_position">
            <property name="text">
-            <string>position:</string>
+            <string>position (m):</string>
            </property>
           </widget>
          </item>
@@ -112,11 +81,42 @@
         </layout>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_velocity">
+           <property name="text">
+            <string>velocity (m/s):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_vx">
+           <property name="minimum">
+            <double>-400.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>400.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_vy">
+           <property name="minimum">
+            <double>-400.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>400.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label_q">
            <property name="text">
-            <string>q:</string>
+            <string>q (C):</string>
            </property>
           </widget>
          </item>
@@ -146,7 +146,7 @@
          <item>
           <widget class="QLabel" name="label_mass">
            <property name="text">
-            <string>mass</string>
+            <string>mass (kg):</string>
            </property>
           </widget>
          </item>
@@ -185,7 +185,7 @@
          <item>
           <widget class="QLabel" name="label_magnetic">
            <property name="text">
-            <string>magnetic:</string>
+            <string>magnetic (T):</string>
            </property>
           </widget>
          </item>
@@ -209,7 +209,7 @@
          <item>
           <widget class="QLabel" name="label_electric">
            <property name="text">
-            <string>electric:</string>
+            <string>electric (N/C):</string>
            </property>
           </widget>
          </item>
@@ -254,7 +254,7 @@
          <item>
           <widget class="QLabel" name="label_deltaT">
            <property name="text">
-            <string>deltaT:</string>
+            <string>deltaT (ms):</string>
            </property>
           </widget>
          </item>
@@ -281,7 +281,7 @@
          <item>
           <widget class="QLabel" name="label_refresh">
            <property name="text">
-            <string>refresh:</string>
+            <string>refresh (ms):</string>
            </property>
           </widget>
          </item>
