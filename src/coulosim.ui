@@ -181,27 +181,6 @@
      <item row="4" column="0">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="label_speed">
-           <property name="text">
-            <string>speed:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_speed">
-           <property name="maximum">
-            <double>100.000000000000000</double>
-           </property>
-           <property name="value">
-            <double>1.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
           <widget class="QLabel" name="label_magnetic">
@@ -246,6 +225,78 @@
          </item>
          <item>
           <widget class="QDoubleSpinBox" name="doubleSpinBox_electric_y"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_speed">
+           <property name="text">
+            <string>speed:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_speed">
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QLabel" name="label_deltaT">
+           <property name="text">
+            <string>deltaT:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_deltaT">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.001000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLabel" name="label_refresh">
+           <property name="text">
+            <string>refresh:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_refresh">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>16.000000000000000</double>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

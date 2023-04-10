@@ -36,8 +36,12 @@ void Coulosim::on_pushButton_play_clicked()
 {
     ui->renderArea->setEnv(ui->doubleSpinBox_magnetic->value(),
                            ui->doubleSpinBox_electric_x->value(),
-                           ui->doubleSpinBox_electric_y->value());
-    ui->renderArea->play(ui->doubleSpinBox_speed->value());
+                           ui->doubleSpinBox_electric_y->value(),
+                           ui->doubleSpinBox_speed->value(),
+                           ui->doubleSpinBox_deltaT->value(),
+                           ui->doubleSpinBox_refresh->value()
+                           );
+    ui->renderArea->play();
 }
 
 

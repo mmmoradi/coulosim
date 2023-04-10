@@ -20,9 +20,9 @@ public:
     QSize sizeHint() const override;
 
     void addCharge(int px, int py, int vx, int vy, float q, float mass, bool mobile);
-    void setEnv(float magnetic, float electric_x, float electric_y);
+    void setEnv(float magnetic, float electric_x, float electric_y, float speed, float deltaT, float refresh);
 
-    void play(float s);
+    void play();
     void pause();
     void reset();
 
@@ -39,8 +39,10 @@ private:
 
     struct environment env;
 
-    float speed;
     QTimer* timer;
+    float speed;   // refresh rate coefficient
+    float refresh; // refresh rate of RenderArea widget in milliseconds
+    float repeat;  // the number of repetition required for the updateCharges function based on speed and refresh
     bool isPlay;
     int elapsed;
 

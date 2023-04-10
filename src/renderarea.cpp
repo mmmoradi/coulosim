@@ -12,9 +12,9 @@ RenderArea::RenderArea(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     isPlay = false;
     env.deltaT = 0.0001;
-//    addCharge(0,0,0,0,0.001,1,0);
-//    addCharge(-50,20,15,0,-0.001,1,1);
-    addCharge(0,0,0,0,-0.001,1,1);
+    addCharge(0,0,0,0,0.001,1,0);
+    addCharge(-50,20,15,0,-0.001,1,1);
+//    addCharge(0,0,0,0,-0.001,1,1);
 }
 
 
@@ -40,17 +40,27 @@ void RenderArea::addCharge(int px, int py, int vx, int vy, float q, float mass, 
 }
 
 
-void RenderArea::setEnv(float magnetic, float electric_x, float electric_y)
+void RenderArea::setEnv(float magnetic,
+                        float electric_x, float electric_y,
+                        float speed,
+                        float deltaT,
+                        float refresh
+                        )
 {
     env.magneticField = magnetic;
     env.electricField = Vector(electric_x, electric_y);
+
+    this->speed = speed;
+    this->refresh = refresh;
+    this->repeat = speed * refresh / deltaT;
+
+    env.deltaT = deltaT / 1000; // convert milisecond to second
 }
 
 
-void RenderArea::play(float s)
+void RenderArea::play()
 {
-    speed = s;
-    timer->start(16); // 16ms = 62.5 FPS
+    timer->start(refresh);
     isPlay = true;
 }
 
@@ -89,8 +99,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
     drawCoordinates(painter);
 
     if (isPlay)
-        // 160 * 0.0001 = 0.016ms
-        for (unsigned long i = 0; i < (160 * speed); i++)
+        for (unsigned long i = 0; i < repeat; i++)
             updateCharges();
 
     drawCharges(painter);
