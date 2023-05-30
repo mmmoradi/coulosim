@@ -12,9 +12,6 @@ RenderArea::RenderArea(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     isPlay = false;
     elapsed = 0;
-    addCharge(0,0,0,0,0.001,1,0);
-    addCharge(-50,20,15,0,-0.001,1,1);
-//    addCharge(0,0,0,0,-0.001,1,1);
 }
 
 
@@ -80,7 +77,6 @@ void RenderArea::reset()
 }
 
 
-// TODO add vector field
 void RenderArea::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
@@ -89,7 +85,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing);
     painter.fillRect(event->rect(), QBrush(Qt::white));
 
-    painter.drawText(8,15, QString::number(elapsed)); //DEBUG
+    painter.drawText(8,15, QString::number(elapsed) + " ms"); //DEBUG
     QElapsedTimer t;
     t.start();
     // Transformations based on real world cordinate system
@@ -103,6 +99,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
             updateCharges();
 
     drawCharges(painter);
+    drawElectricField(painter);
 
     elapsed = t.elapsed();
 }
@@ -137,6 +134,27 @@ void RenderArea::drawCharges(QPainter& painter)
             painter.setPen(ncharge);
 
         painter.drawPoint(charge.getPosition());
+    }
+}
+
+
+void RenderArea::drawElectricField(QPainter &painter)
+{
+    for (int i = -350; i <= 350; i += 20) {
+        for (int j = -350; j <= 350; j += 20) {
+            Vector ef = {0,0};
+
+            for (auto& charge : env.listOfCharge) {
+                ef = charge.getElectricField(Vector(i,j)) + ef;
+            }
+            ef = ef + env.electricField;
+            ef = ef.normalize();
+            ef = ef *10;
+    //            painter.setPen(QPen(Qt::darkGray,3,Qt::SolidLine,Qt::RoundCap));
+    //            painter.drawPoint(i, j);
+            painter.setPen(Qt::darkGray);
+            painter.drawLine(i,j,i+ef.getX(),j+ef.getY());
+        }
     }
 }
 

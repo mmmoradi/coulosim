@@ -16,19 +16,14 @@ Coulosim::~Coulosim()
 
 void Coulosim::on_btn_add_charge_clicked()
 {
-    int px = ui->doubleSpinBox_px->value();
-    int py = ui->doubleSpinBox_py->value();
-
-    int vx = ui->doubleSpinBox_vx->value();
-    int vy = ui->doubleSpinBox_vy->value();
-
-    float q = ui->doubleSpinBox_q->value();
-
-    float mass = ui->doubleSpinBox_mass->value();
-
-    bool mobile = ui->checkBox_mobile->isChecked();
-
-    ui->renderArea->addCharge(px, py, vx, vy, q, mass, mobile);
+    ui->renderArea->addCharge(ui->doubleSpinBox_px->value(),
+                              ui->doubleSpinBox_py->value(),
+                              ui->doubleSpinBox_vx->value(),
+                              ui->doubleSpinBox_vy->value(),
+                              ui->doubleSpinBox_q->value(),
+                              ui->doubleSpinBox_mass->value(),
+                              ui->checkBox_mobile->isChecked()
+                              );
 }
 
 
@@ -55,3 +50,50 @@ void Coulosim::on_pushButton_reset_clicked()
 {
     ui->renderArea->reset();
 }
+
+
+void Coulosim::on_pushButton_sample_1_clicked()
+{
+    ui->doubleSpinBox_electric_x->setValue(0);
+    ui->doubleSpinBox_electric_y->setValue(0);
+    ui->doubleSpinBox_magnetic->setValue(0);
+    ui->doubleSpinBox_speed->setValue(1);
+
+    ui->renderArea->addCharge(0,0,0,0,0.001,1,0);
+    ui->renderArea->addCharge(-50,20,15,0,-0.001,1,1);
+}
+
+
+void Coulosim::on_pushButton_sample_2_clicked()
+{
+    ui->doubleSpinBox_electric_x->setValue(0.10);
+    ui->doubleSpinBox_electric_y->setValue(0);
+    ui->doubleSpinBox_magnetic->setValue(0);
+    ui->doubleSpinBox_speed->setValue(1);
+
+    ui->renderArea->addCharge(0,0,0,0,-0.001,0.000001,1);
+}
+
+
+void Coulosim::on_pushButton_sample_3_clicked()
+{
+    ui->doubleSpinBox_electric_x->setValue(0);
+    ui->doubleSpinBox_electric_y->setValue(0);
+    ui->doubleSpinBox_magnetic->setValue(-0.01);
+    ui->doubleSpinBox_speed->setValue(10);
+
+    ui->renderArea->addCharge(0,0,1,0,0.000001,0.000001,1);
+}
+
+
+void Coulosim::on_pushButton_sample_4_clicked()
+{
+    ui->doubleSpinBox_electric_x->setValue(0);
+    ui->doubleSpinBox_electric_y->setValue(0);
+    ui->doubleSpinBox_magnetic->setValue(0);
+    ui->doubleSpinBox_speed->setValue(0.01);
+
+    ui->renderArea->addCharge(0,0,0,0,-1,1,0);
+    ui->renderArea->addCharge(0,100,9480,0,1,1,1);
+}
+

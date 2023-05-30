@@ -24,6 +24,14 @@ private slots:
 
     void on_pushButton_reset_clicked();
 
+    void on_pushButton_sample_1_clicked();
+
+    void on_pushButton_sample_2_clicked();
+
+    void on_pushButton_sample_3_clicked();
+
+    void on_pushButton_sample_4_clicked();
+
 private:
     Ui::Coulosim *ui;
 };

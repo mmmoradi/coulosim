@@ -34,6 +34,7 @@ protected:
 private:
     void drawCoordinates(QPainter& painter);
     void drawCharges(QPainter& painter);
+    void drawElectricField(QPainter& painter);
     void updateCharges();
 
 

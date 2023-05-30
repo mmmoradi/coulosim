@@ -40,6 +40,8 @@ public:
 
     QPoint getPosition() const;
     bool getSign() const;
+
+    Vector getElectricField(Vector point);
 };
 
 #endif // CHARGE_H

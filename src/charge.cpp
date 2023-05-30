@@ -47,11 +47,12 @@ void Charge::updatePosition()
     velocity = velocity + acceleration * env.deltaT;
 
     // TODO change the range for x and y
-    if (position.getX() < -300 || position.getX() > 300) {
+    // TODO  correct the collision of the charge with the wall
+    if (position.getX() < -350 || position.getX() > 350) {
         velocity.setX(-velocity.getX());
     }
 
-    if (position.getY() < -300 || position.getY() > 300) {
+    if (position.getY() < -350 || position.getY() > 350) {
         velocity.setY(-velocity.getY());
     }
 }
@@ -66,4 +67,12 @@ QPoint Charge::getPosition() const
 bool Charge::getSign() const
 {
     return q > 0 ? true : false;
+}
+
+
+Vector Charge::getElectricField(Vector point)
+{
+    Vector r = point - this->position;
+
+    return r.normalize() * this->q / r.magnitudeSquerd();
 }
