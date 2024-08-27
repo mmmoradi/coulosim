@@ -7,6 +7,7 @@
 #define COULOMB_CONSTANT (8.9875517923e9)
 #define ELECTRON_MASS    (9.1093837e-31)
 
+#include <vector>
 
 class Charge;
 struct environment {
